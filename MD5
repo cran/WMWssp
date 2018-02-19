@@ -1,0 +1,9 @@
+a8c25ce7cf99d75c69d60549d55564c0 *DESCRIPTION
+07f1f658908ea7022397a1302a6b9e1d *NAMESPACE
+bd3fac406268f92ff8076caf97009e44 *R/S3methods.R
+457bbddfa061f7aea2fe7167bf61fbff *R/samplesize.R
+b0de4c5d0a37bc6de210f750861b27be *R/utility.R
+2b7e1fdc82175860f943e1f98a7642a7 *man/WMWssp.Rd
+7f3b5814bc8837a67d897b6ccee2b096 *man/WMWssp_maximize.Rd
+b5be0e017c714eba0fe9e895358a5089 *man/WMWssp_minimize.Rd
+d3523e45b8c7f418606fc630d0f1cf45 *man/WMWssp_noether.Rd
