@@ -23,6 +23,7 @@
 #' @return \item{N}{The total sample size which was used.}
 #' @example R/example_maximize.txt
 #' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
+#' @references Happ, M., Bathke, A. C., & Brunner, E. (2018). Optimal Sample Size Planning for the Wilcoxon-Mann-Whitney-Test. arXiv preprint arXiv:1805.12249.
 #' @keywords export
 WMWssp_maximize = function(x, y, alpha = 0.05, N){
   stopifnot(all(is.finite(x)), all(is.finite(y)),
@@ -84,7 +85,7 @@ WMWssp_maximize = function(x, y, alpha = 0.05, N){
   cWMWssp$t <- mint
   cWMWssp$power <- power
   cWMWssp$alpha <- alpha
-  cWMWssp$simulation <- NULL
+  cWMWssp$simulation <- -1
   cWMWssp$N <- ceiling(N*mint)+ceiling(N*(1-mint))
   cWMWssp$call <- sys.call(sys.parent())[1L]
   class(cWMWssp) <- "WMWssp"
@@ -107,6 +108,7 @@ WMWssp_maximize = function(x, y, alpha = 0.05, N){
 #' @return \item{power}{The power which was used.}
 #' @return \item{N}{The minimized sample size.}
 #' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
+#' @references Happ, M., Bathke, A. C., & Brunner, E. (2018). Optimal Sample Size Planning for the Wilcoxon-Mann-Whitney-Test. arXiv preprint arXiv:1805.12249.
 #' @example R/example_minimize.txt
 #' @keywords export
 WMWssp_minimize = function(x, y, alpha = 0.05, power = 0.8, simulation = FALSE, nsim = 10^4){
@@ -207,6 +209,7 @@ WMWssp_minimize = function(x, y, alpha = 0.05, power = 0.8, simulation = FALSE, 
 #' @return \item{power}{The power which was used.}
 #' @return \item{N}{The sample size needed.}
 #' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
+#' @references Happ, M., Bathke, A. C., & Brunner, E. (2018). Optimal Sample Size Planning for the Wilcoxon-Mann-Whitney-Test. arXiv preprint arXiv:1805.12249.
 #' @example R/example_ssp.txt
 #' @keywords export
 WMWssp=function(x,y,alpha=0.05,power=0.8, t = 1/2, simulation = FALSE, nsim = 10^4){
@@ -319,9 +322,9 @@ WMWssp_noether=function(alpha,power,t, p, x=c(0), ties=FALSE){
     sigma2M <- 1/m1^3*sum((R1-(m1+1)/2)^2)
 
     # estimated sample size:
-    Nv <- sigma2M/(p-1/2)^2*(qnorm(1-alpha/2)+qnorm(power))^2*1/(t*(1-t))
-    n1v <- Nv*t
-    n2v <- Nv*(1-t)
+    Nu <- sigma2M/(p-1/2)^2*(qnorm(1-alpha/2)+qnorm(power))^2*1/(t*(1-t))
+    n1u <- Nu*t
+    n2u <- Nu*(1-t)
 
     # create data.frame for output
     output = data.frame(Results=1)
@@ -330,13 +333,13 @@ WMWssp_noether=function(alpha,power,t, p, x=c(0), ties=FALSE){
     #output[3,1]=qnorm(1-alpha/2)
     #output[4,1]=qnorm(power)
     output[3,1]=p
-    output[4,1]=Nv
+    output[4,1]=Nu
     output[5,1]=t
-    output[6,1]=n1v
-    output[7,1]=n2v
-    output[8,1]=ceiling(n1v)+ceiling(n2v)
-    output[9,1]=ceiling(n1v)
-    output[10,1]=ceiling(n2v)
+    output[6,1]=n1u
+    output[7,1]=n2u
+    output[8,1]=ceiling(n1u)+ceiling(n2u)
+    output[9,1]=ceiling(n1u)
+    output[10,1]=ceiling(n2u)
 
   }
   # case 2: no prior information, continuous case
