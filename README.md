@@ -1,8 +1,9 @@
-# WMWssp
+# WMWssp 0.3.6
 
 [![CRANstatus](https://www.r-pkg.org/badges/version/WMWssp)](https://cran.r-project.org/package=WMWssp)
 [![](https://cranlogs.r-pkg.org/badges/WMWssp)](https://cran.r-project.org/package=WMWssp)
 [![Travis-CI Build Status](https://travis-ci.org/happma/WMWssp.svg?branch=master)](https://travis-ci.org/happma/WMWssp)
+[![Build status](https://ci.appveyor.com/api/projects/status/1o3r47cxb7oejhpl?svg=true)](https://ci.appveyor.com/project/happma/wmwssp)
 [![codecov](https://codecov.io/gh/happma/WMWssp/branch/master/graph/badge.svg)](https://codecov.io/gh/happma/WMWssp)
 
 Calculates the minimal sample size for the Wilcoxon-Mann-Whitney test that is needed for a given power and two sided type I error rate. The method works for metric data with and without ties, count data, ordered categorical data, and even dichotomous data. But data is needed for the reference group to generate synthetic data for the treatment group based on a relevant effect.
@@ -10,7 +11,7 @@ For details, see
 
 Brunner, E., Bathke A. C. and Konietschke, F: Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS, Springer Verlag, to appear,
 
-Happ, M., Bathke, A. C., & Brunner, E. (2018). Optimal Sample Size Planning for the Wilcoxon-Mann-Whitney-Test. <a href="https://arxiv.org/abs/1805.12249">arXiv preprint arXiv:1805.12249.</a>
+<a href=" https://doi.org/10.1002/sim.7983">Happ, M., Bathke, A. C., & Brunner, E. (2019). Optimal sample size planning for the Wilcoxon‐Mann‐Whitney test. Statistics in medicine, 38(3), 363-375.</a>
 
 
 To install the current development version:
